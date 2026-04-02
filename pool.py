@@ -1,32 +1,72 @@
-# For each sale, the program must:
-# Ask for the number of adults. Adults are classified as 16 years or older.
-# Ask for the number of children. Children are under 16.
-# Validate the input.
-# The input must be an integer. If the user enters text or a float, display an error and ask again.
-# The number of adults must be positive (at least 1, as children must be accompanied).
-# The number of children must be non-negative (0 or higher).
-# Calculate the cheapest price. The system must calculate the lowest possible cost for the group based on the following price list:
-# Adult: $5.00
-# Child: $4.00
-# Family Type A (2 Adults, 2 Children): $16.00
-# Family Type B (1 Adult, 3 Children): $16.00
-# Output the receipt. Display an itemised list of fees and the total price.
 
 print("--- Codetown Public Pool POS ---")
-determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: ")
+determine_if_sale_called = input("Press q to exit or any key to start a new sale: \n")
 
-while(determine_if_sale_called != enter_key_pressed):
-  no_of_adults = int(input("Enter number of adults: "))
-  no_of_children = int(input("Enter number of chlidren: "))
+prices = {
+  "Adult" : 5,
+  "Child" : 4,
+  "Family Pass A" : 16,
+  "Family Pass B" : 16
+}
   
-  if(type(no_of_adults) != 'int' and type(no_of_children) != 'int'):
-    raise TypeError("Error: Please enter a valid integer using digits.")
-  if(no_of_adults<=0):
-    raise Exception("Error: At least one adult is required for supervision.")
-  if(no_of_children<0):
-    raise Exception("Error: Number of children cannot be negative.")
-    
-    
 
+def family_pass_a_calculation():
+  print("Receipt: ")
+  print("FAMILY PASS A \t : $Cost for each one ")
+  print("---------------------------")
+  print("TOTAL: $ return total float")
+  print("\n")
+
+def family_pass_b_calculation():
+  print("Receipt:")
+  print("FAMILY PASS B \t : $Cost for each one ")
+  print("---------------------------")
+  print("TOTAL: $ return total")
+  print("\n")
+
+def ordinary_ticket_calculation():
+  print("Receipt:")
+  print("Adult \t : $Cost for each one ")
+  print("---------------------------")
+  print("TOTAL: $ return total")
+  print("\n")
+
+while(determine_if_sale_called != "q"):
+  
+  try:
+    # Basis of our program, need numbers of adults & children for calculations:
+    no_of_adults = int(input("Enter number of adults: "))
+    no_of_children = int(input("Enter number of chlidren: "))
+    print("\n")
+  except ValueError:
+    # redundant, as python checks itself for int type with int(input()), but task requirements speficially mention:
+    # The input must be an integer. If the user enters text or a float, display an error and ask again.
+    print("Error: Please enter a valid integer using digits for number of adults & children.")
+  
+  # input validation; We must have at least one adult for supervision.
+  if(no_of_adults<1):
+    raise ValueError("Error: At least one adult is required for supervision.")
+  if(no_of_children<0):
+    raise ValueError("Error: Number of children cannot be negative.")
+  
+  # run through cases to output final tickets
+  # this is wrong, what about when there is e.g. 4 adults and 2 children? we wouldn't return cheapest price with this...
+  # instead i think what we can do is use modulo and check for even and odd numbers, if even that means we have to have at least 2 adults and 2 children, only then we give family pass
+  # this should handle case where we have like 4 adults and 2 children... but even with this modulo approach I need to check the output e.g. when we have 2 adults and 0 children...
+  # maybe the solution is to use the modulo thing, but make sure we have at least 1 children and one adult
+  if( no_of_adults == 2 and no_of_children == 2):
+    family_pass_a_calculation()
+  elif( no_of_adults == 1 and no_of_children == 3):
+    family_pass_b_calculation()
+  else:
+    ordinary_ticket_calculation()
+    
+  
+     
+  # print(f'no_of_adults is {no_of_adults}')
+  # print(f'no_of_children is {no_of_children}')
+  
+  determine_if_sale_called = input("Press q to exit or any key to start a new sale: \n")
+  
 
 
