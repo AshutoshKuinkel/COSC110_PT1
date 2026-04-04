@@ -104,7 +104,7 @@ def main() -> None:
         break
         # The input must be an integer. If the user enters text or a float, display an error and ask again.
       except ValueError:
-         print("Error: Please enter a valid integer for number of adults.\n")
+         print("Error: Please enter a valid integer for number of children.\n")
         
       print("\n")
     
