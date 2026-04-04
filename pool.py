@@ -65,20 +65,25 @@ def main() -> None:
     try:
       # Basis of our program, need numbers of adults & children for calculations:
       no_of_adults = int(input("Enter number of adults: "))
+      
+      # input validation; We must have at least one adult for supervision.
+      while(no_of_adults < 1):
+        print("Error: At least one adult is required for supervision.\n")
+        no_of_adults = int(input("Enter number of adults: "))
+        
+      print("\n")
+      
+      # input validation; We must have a posiive amount of children
       no_of_children = int(input("Enter number of chlidren: "))
+      while(no_of_children<0):
+        print("Error: Number of children cannot be negative.\n")
+        no_of_children = int(input("Enter number of chlidren: "))
+        
       print("\n")
     except ValueError:
-      # redundant, as python checks itself for int type with int(input()), but task requirements speficially mention:
       # The input must be an integer. If the user enters text or a float, display an error and ask again.
-      print("\n")
-      print("Error: Please enter a valid integer using digits for number of adults & children.")
+      print("Error: Please enter a valid integer for number of adults & children.\n")
       continue
-    
-    # input validation; We must have at least one adult for supervision.
-    if(no_of_adults<1):
-      raise ValueError("Error: At least one adult is required for supervision.")
-    if(no_of_children<0):
-      raise ValueError("Error: Number of children cannot be negative.")
     
     receipt_args = get_cheapest_cost(no_of_adults,no_of_children)
     
