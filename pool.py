@@ -3,7 +3,16 @@ import math
 # Helper to output purchase receipt:
 def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_remaining ) -> str :
   '''
-    Write up docstring for this helper
+    Output transaction receipt given the cheapest transaction possible from number of adults & children.
+    
+    Args:
+      num_of_pass_a (int): Number of Family Type A passes purchased
+      num_of_pass_b (int): Number of Family Type B passes purchased
+      adults_remaining (int): Number of Adults remaining (Adults not included in Family Pass calculations)
+      children_remaining (int): Number of Children remaining (Children not included in Family Pass calculations) 
+      
+    Returns:
+      (str): Complete Transaction Receipt with correct purchase quantities & amounts
   '''
   print("Receipt: ")
   
@@ -22,7 +31,14 @@ def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_re
 # i.e. make sure we calculate all possible output prices from all possible combinations and select minimum cost
 def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int] | None):
   '''
-  Write up docstring for this helper
+  Outputs cheapest possible transaction cost by scanning all possible combinations of billing with given adults and children arguments.
+  
+  Args:
+    no_of_adults (int): Number of Adults wishing to enter facility
+    no_of_children (int): Number of Children wishing to enter facility
+    
+  Returns:
+    tuple[int, int, int, int]: Captured arguments for cheapest case to output to purchase_receipt() function.
   '''
   # setting variables to make final calculations of cheapest cost more inuitive, focusing on core logic/problem at hand and readability rather than few short lines of code:
   min_cost = math.inf
