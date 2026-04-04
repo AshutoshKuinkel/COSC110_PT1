@@ -7,14 +7,14 @@ def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_re
   '''
   print("Receipt: ")
   
-  cost = 16*num_of_pass_a + 16*num_of_pass_b + 5*adults_remaining + 4*children_remaining
+  cost = float(16*num_of_pass_a + 16*num_of_pass_b + 5*adults_remaining + 4*children_remaining)
   
-  print(f"{num_of_pass_a}x Family pass A \t : ${16.00*num_of_pass_a}")
-  print(f"{num_of_pass_b}x Family pass B \t : ${16.00*num_of_pass_b}")
-  print(f"{adults_remaining}x Adult \t\t : ${5.00*adults_remaining}")
-  print(f"{children_remaining}x Child \t\t : ${4.00*children_remaining}")
+  print(f"{num_of_pass_a}x Family pass A \t : ${16.00*num_of_pass_a: .2f}")
+  print(f"{num_of_pass_b}x Family pass B \t : ${16.00*num_of_pass_b: .2f}")
+  print(f"{adults_remaining}x Adult \t\t : ${5.00*adults_remaining: .2f}")
+  print(f"{children_remaining}x Child \t\t : ${4.00*children_remaining: .2f}")
   print("-------------------------------------------------")
-  print(f"TOTAL : ${cost}")
+  print(f"TOTAL : ${cost: .2f}\n")
   
 
 # Helper to get the cheapest cost:
@@ -61,29 +61,36 @@ def main() -> None:
   determine_if_sale_called = input("Press q to exit or any key to start a new sale: \n")
   
   while(determine_if_sale_called != "q"):
-    
-    try:
-      # Basis of our program, need numbers of adults & children for calculations:
-      no_of_adults = int(input("Enter number of adults: "))
-      
-      # input validation; We must have at least one adult for supervision.
-      while(no_of_adults < 1):
-        print("Error: At least one adult is required for supervision.\n")
+        
+    # Basis of our program, need numbers of adults & children for calculations:
+    while True:
+      try:
         no_of_adults = int(input("Enter number of adults: "))
+        # input validation; We must have at least one adult for supervision.
+        if no_of_adults < 1:
+          print("Error: At least one adult is required for supervision.\n")
+          continue
+        break
+      # # The input must be an integer. If the user enters text or a float, display an error and ask again.
+      except ValueError:
+         print("Error: Please enter a valid integer for number of adults.\n")
         
-      print("\n")
+        
+    print("\n")
       
-      # input validation; We must have a posiive amount of children
-      no_of_children = int(input("Enter number of chlidren: "))
-      while(no_of_children<0):
-        print("Error: Number of children cannot be negative.\n")
-        no_of_children = int(input("Enter number of chlidren: "))
+    while True:
+      try:
+        no_of_children = int(input("Enter number of children: "))
+        # input validation; We must have a posiive amount of children
+        if no_of_children < 0:
+          print("Error: Number of children cannot be negative.\n")
+          continue
+        break
+        # The input must be an integer. If the user enters text or a float, display an error and ask again.
+      except ValueError:
+         print("Error: Please enter a valid integer for number of adults.\n")
         
       print("\n")
-    except ValueError:
-      # The input must be an integer. If the user enters text or a float, display an error and ask again.
-      print("Error: Please enter a valid integer for number of adults & children.\n")
-      continue
     
     receipt_args = get_cheapest_cost(no_of_adults,no_of_children)
     
