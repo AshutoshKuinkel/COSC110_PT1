@@ -1,4 +1,4 @@
-# Name: Ash Kuinkel
+<h1 style="text-align: center;">Name: Ash Kuinkel</h1>
 
 ## Purpose/Summary : 
 The purpose of this assingment is to solve the client's problem, i.e. Codetown Public Pool requires a text-based point-of-sale system written in Python. The system should incorporate a main loop that runs continuously until the user indicates they wish to exit (by pressing Enter/entering an empty string at the start of a sale).
