@@ -74,10 +74,11 @@ def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int]
 
 def main() -> None:
   print("--- Codetown Public Pool POS ---")
-  determine_if_sale_called = input("Press q to exit or any key to start a new sale: \n")
+  determine_if_sale_called = input("Press ENTER to exit or type another key to start a new sale: ")
   
-  while(determine_if_sale_called != "q"):
-        
+  # we run our program until the user presses enter to exit...
+  while(determine_if_sale_called != ""):
+    print("\n")
     # Basis of our program, need numbers of adults & children for calculations:
     while True:
       try:
@@ -113,7 +114,7 @@ def main() -> None:
     if(receipt_args):
       purchase_receipt(*receipt_args)
     
-    determine_if_sale_called = input("Press q to exit or any key to start a new sale: \n")
+    determine_if_sale_called = input("Press ENTER to exit or type another key to start a new sale: \n")
 
 
 if __name__ == "__main__":
