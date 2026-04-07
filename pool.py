@@ -1,7 +1,7 @@
 import math
 
 # Helper to output purchase receipt:
-def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_remaining ) -> str :
+def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_remaining ) -> None :
   '''
     Output transaction receipt given the cheapest transaction possible from number of adults & children.
     
@@ -12,17 +12,21 @@ def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_re
       children_remaining (int): Number of Children remaining (Children not included in Family Pass calculations) 
       
     Returns:
-      (str): Complete Transaction Receipt with correct purchase quantities & amounts
+      (None): Prints complete Transaction Receipt with correct purchase quantities & amounts
   '''
-  print("Receipt: ")
+  print("Receipt:")
   
   cost = float(16*num_of_pass_a + 16*num_of_pass_b + 5*adults_remaining + 4*children_remaining)
   
-  print(f"{num_of_pass_a}x Family pass A \t : ${16.00*num_of_pass_a: .2f}")
-  print(f"{num_of_pass_b}x Family pass B \t : ${16.00*num_of_pass_b: .2f}")
-  print(f"{adults_remaining}x Adult \t\t : ${5.00*adults_remaining: .2f}")
-  print(f"{children_remaining}x Child \t\t : ${4.00*children_remaining: .2f}")
-  print("-------------------------------------------------")
+  if(num_of_pass_a >= 1):
+    print(f"{num_of_pass_a}x Family Pass A \t : ${16.00*num_of_pass_a:.2f}")
+  if(num_of_pass_b >= 1):
+    print(f"{num_of_pass_b}x Family Pass B \t : ${16.00*num_of_pass_b:.2f}")
+  if(adults_remaining >= 1):
+    print(f"{adults_remaining}x Adult \t\t : ${5.00*adults_remaining:.2f}")
+  if(children_remaining >= 1):
+    print(f"{children_remaining}x Child \t\t : ${4.00*children_remaining:.2f}")
+  print("------------------------------------------")
   print(f"TOTAL : ${cost: .2f}\n")
   
 
@@ -74,7 +78,7 @@ def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int]
 
 def main() -> None:
   print("--- Codetown Public Pool POS ---")
-  determine_if_sale_called = input("Press ENTER to exit or type another key to start a new sale: ")
+  determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: ")
   
   # we run our program until the user presses enter to exit...
   while(determine_if_sale_called != ""):
@@ -90,7 +94,7 @@ def main() -> None:
         break
       # # The input must be an integer. If the user enters text or a float, display an error and ask again.
       except ValueError:
-         print("Error: Please enter a valid integer for number of adults.\n")
+         print("Error: Please enter a valid integer using digits.\n")
         
         
     print("\n")
@@ -98,6 +102,7 @@ def main() -> None:
     while True:
       try:
         no_of_children = int(input("Enter number of children: "))
+        print("\n")
         # input validation; We must have a posiive amount of children
         if no_of_children < 0:
           print("Error: Number of children cannot be negative.\n")
@@ -105,7 +110,7 @@ def main() -> None:
         break
         # The input must be an integer. If the user enters text or a float, display an error and ask again.
       except ValueError:
-         print("Error: Please enter a valid integer for number of children.\n")
+         print("Error: Please enter a valid integer using digits.\n")
         
       print("\n")
     
@@ -114,7 +119,7 @@ def main() -> None:
     if(receipt_args):
       purchase_receipt(*receipt_args)
     
-    determine_if_sale_called = input("Press ENTER to exit or type another key to start a new sale: \n")
+    determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: \n")
 
 
 if __name__ == "__main__":
