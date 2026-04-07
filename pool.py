@@ -1,4 +1,3 @@
-import math
 
 # Helper to output purchase receipt:
 def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_remaining ) -> None :
@@ -45,7 +44,7 @@ def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int]
     tuple[int, int, int, int]: Captured arguments for cheapest case to output to purchase_receipt() function.
   '''
   # setting variables to make final calculations of cheapest cost more inuitive, focusing on core logic/problem at hand and readability rather than few short lines of code:
-  min_cost = math.inf
+  min_cost = float('inf')
   all_possible_nums_of_family_a_passes = no_of_adults//2 + 1 # e.g. 8 adults = 8//2 = 4 bundles possible, + 1 is to include max num...
   all_possible_nums_of_family_b_passes = no_of_children//3 + 1 # e.g. 3 children = 3//3 = 0 + 1, 1 bundle possible
   
