@@ -17,4 +17,6 @@ The marking criteria/client requirements of this problem specifically require us
 
 Let's dive through how each of the following requirements listed have been accomplished through my proposed solution. 
 
+1) The source code includes comments, and also includes 
+
 ## References:

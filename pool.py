@@ -102,7 +102,7 @@ def main() -> None:
       try:
         no_of_children = int(input("Enter number of children: "))
         print("\n")
-        # input validation; We must have a posiive amount of children
+        # input validation; We must have a positive amount of children
         if no_of_children < 0:
           print("Error: Number of children cannot be negative.\n")
           continue
