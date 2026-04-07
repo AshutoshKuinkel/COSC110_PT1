@@ -1,3 +1,8 @@
+"""
+Add a breif overview here of the purpose of this file etc...,
+treat it as documentation...
+Apparently it's called a module docstring...
+"""
 
 # Helper to output purchase receipt:
 def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_remaining ) -> None :

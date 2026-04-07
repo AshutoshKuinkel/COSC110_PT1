@@ -6,6 +6,7 @@ The purpose of this assingment is to solve the client's problem, i.e. Codetown P
 ## How to Run:
 
 
+
 ## How Proposed solution adheres to marking criteria/client requirements:
 The marking criteria/client requirements of this problem specifically require us:
  - Ensure we have adequate documentation (including comments in source)
@@ -17,6 +18,20 @@ The marking criteria/client requirements of this problem specifically require us
 
 Let's dive through how each of the following requirements listed have been accomplished through my proposed solution. 
 
-1) The source code includes comments, and also includes 
+1) Our entire program is well documented. It includes a module docstring, docstring for functions, and of course comments in source code. Comments in source code are meaningful, they are not written to explain what a peice of code is doing, as that is evident from the code itself, but rather the approach we have taken/ why the peice of code is doing what it's doing.
+
+2) Indeed, the program runs without any hanging or crashing. Even when user enters unexpected input, the program alerts user that the input is not valid without crashing and prompts for a valid input to be entered. This was a deliberate choice to match the requirements/marking criteria.
+
+3) The program handles valid input correctly. This is reinforced through the testing process in which valid inputs always result in valid outputs.
+
+4) As mentioned above, the program handles incorrect input gracefully. We don't hang or crash on incorrect output, we simply alert the user letting them know what they entered was not a valid input and we prompt them to enter the input again. This repeats until the input we receive is valid.
+
+5) We can be very confident that the program correctly calulates the correct values. We have tested the program with boundary value inputs, valid inputs and invalid inputs, whilst making sure all the actual outputs match the expected values. E.g. we would expect if we had 3 adults & 3 children to receive either a Family Pass A or a Family Pass B and pay the remaining for an adult and child, bringing our cheapest cost to $25, as compared to paying for 3 adults and 3 children to total $29.00.
+
+6) The program does indeed produce all required output within the specified receipt format. The output format has been replicated closely to the original specified examples given in the task description. This includes error messages, input messages etc..
 
 ## References:
+- https://www.w3schools.com/python/python_args_kwargs.asp
+- https://www.w3schools.com/python/python_dictionaries.asp
+- https://www.geeksforgeeks.org/python/python-docstrings/
+- https://www.geeksforgeeks.org/python/python-find-minimum-pair-sum-in-list/
