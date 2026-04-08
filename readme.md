@@ -34,7 +34,7 @@ python --version
 You should see an output similar to: ```Python 3.14.3```
 
 NOTE : If for some reason you do not have python installed, then you will see an error message similar to this: ```bash: python: command not found```
-In that case, you may need to install Python 3 (if you sudo privileges on your system), by running the command (assuming we are on fedora):
+In that case, you may need to install Python 3 (if you have sudo privileges on your system), by running the command (assuming we are on fedora):
 
 ```bash
 sudo dnf install python3
