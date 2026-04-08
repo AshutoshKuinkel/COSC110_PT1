@@ -1,7 +1,19 @@
 """
-Add a breif overview here of the purpose of this file etc...,
-treat it as documentation...
-Apparently it's called a module docstring...
+pool.py : CodeTown Pubilc Pool text-based P.O.S system.
+
+The purpose of this program is to receive an input for the amount of
+adults and children enetring the pool, and output the cheapest cost
+for the set amount of adults and children.
+
+Knowing the price for a single adult, single child, Family Pass A & 
+Family Pass B, the approach taken was to calculate all possible
+combinations for the given input and return the minimum cost as output
+in the specified receipt format. Input validation is gracefully handled
+with prompts and error messages e.g. requiring at least one adult for
+supervision, non-negative counts etc.
+
+Run pool.py to experience the P.O.S system and process sales until user
+exits.
 """
 
 # Helper to output purchase receipt:
@@ -18,6 +30,7 @@ def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_re
     Returns:
       (None): Prints complete Transaction Receipt with correct purchase quantities & amounts
   '''
+  print("\n")
   print("Receipt:")
   
   cost = float(16*num_of_pass_a + 16*num_of_pass_b + 5*adults_remaining + 4*children_remaining)
@@ -52,7 +65,7 @@ def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int]
   min_cost = float('inf')
   all_possible_nums_of_family_a_passes = no_of_adults//2 + 1 # e.g. 8 adults = 8//2 = 4 bundles possible, + 1 is to include max num...
   all_possible_nums_of_family_b_passes = no_of_children//3 + 1 # e.g. 3 children = 3//3 = 0 + 1, 1 bundle possible
-  
+  receipt_args_for_min_case = None
   
   for num_of_pass_a in range(all_possible_nums_of_family_a_passes):
     for num_of_pass_b in range(all_possible_nums_of_family_b_passes):
@@ -106,7 +119,6 @@ def main() -> None:
     while True:
       try:
         no_of_children = int(input("Enter number of children: "))
-        print("\n")
         # input validation; We must have a positive amount of children
         if no_of_children < 0:
           print("Error: Number of children cannot be negative.\n")
@@ -116,8 +128,6 @@ def main() -> None:
       except ValueError:
          print("Error: Please enter a valid integer using digits.\n")
         
-      print("\n")
-    
     receipt_args = get_cheapest_cost(no_of_adults,no_of_children)
     
     if(receipt_args):
