@@ -4,7 +4,56 @@
 The purpose of this assingment is to solve the client's problem, i.e. Codetown Public Pool requires a text-based point-of-sale system written in Python. The system should incorporate a main loop that runs continuously until the user indicates they wish to exit (by pressing Enter/entering an empty string at the start of a sale).
 
 ## How to Run:
+Let's dive into how this program can be run. 
 
+The program has been packaged in the form of a tarball, preserving all the current files, directories including structures, file permissions etc.
+This was done using the command:
+
+```bash
+tar -zc readme.md pool.py > pt1.tgz
+```
+
+where z - puts archive through gzip & c - creates archive
+
+To load the archived directory, files etc., run the command:
+
+```bash
+tar -zxf pt1.tgz 
+```
+where z - puts archive through gzip, x - extracts from archive (into current directory) & f - refers to name of archive i.e. pt1.tgz
+
+The readme.md & pool.py will now be available in your current directory with the appropriate permissions to execute and read.
+
+The next step is to confirm that you have python3 installed. Assuming our program is being tested on turing, we should already
+have python 3 interpreter installed. To verify that python is installed, run the following command:
+
+```bash
+python --version
+```
+
+You should see an output similar to: ```Python 3.14.3```
+
+NOTE : If for some reason you do not have python installed, then you will see an error message similar to this: ```bash: python: command not found```
+In that case, you may need to install Python 3 (if you sudo privileges on your system), by running the command (assuming we are on fedora):
+
+```bash
+sudo dnf install python3
+```
+
+Now to read our program ```pool.py```, we are simply able to use:
+``` bash
+cat pool.py
+```
+
+To execute, run:
+``` bash
+python3 pool.py
+```
+
+To view readme.md file, run:
+```bash
+cat readme.md
+```
 
 
 ## How Proposed solution adheres to marking criteria/client requirements:
@@ -35,3 +84,4 @@ Let's dive through how each of the following requirements listed have been accom
 - https://www.w3schools.com/python/python_dictionaries.asp
 - https://www.geeksforgeeks.org/python/python-docstrings/
 - https://www.geeksforgeeks.org/python/python-find-minimum-pair-sum-in-list/
+- https://computing.help.inf.ed.ac.uk/FAQ/whats-tarball-or-how-do-i-unpack-or-create-tgz-or-targz-file
