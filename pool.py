@@ -1,3 +1,4 @@
+# TO DO: handle ctrl c, keyboard interrupt for graceful err handling instead of crashing..
 """
 pool.py : CodeTown Pubilc Pool text-based P.O.S system.
 
