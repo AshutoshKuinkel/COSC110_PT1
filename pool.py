@@ -43,7 +43,7 @@ def purchase_receipt(num_of_pass_a, num_of_pass_b, adults_remaining, children_re
     print(f"{adults_remaining}x Adult \t\t : ${5.00*adults_remaining:.2f}")
   if(children_remaining >= 1):
     print(f"{children_remaining}x Child \t\t : ${4.00*children_remaining:.2f}")
-  print("------------------------------------------")
+  print("------------------------------------")
   print(f"TOTAL : ${cost: .2f}\n")
   
 
