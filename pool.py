@@ -94,46 +94,51 @@ def get_cheapest_cost(no_of_adults,no_of_children) -> (tuple[int, int, int, int]
   return receipt_args_for_min_case
 
 def main() -> None:
-  print("--- Codetown Public Pool POS ---")
-  determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: ")
+  try:
+    print("--- Codetown Public Pool POS ---")
+    determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: ")
   
-  # we run our program until the user presses enter to exit...
-  while(determine_if_sale_called != ""):
-    print("\n")
-    # Basis of our program, need numbers of adults & children for calculations:
-    while True:
-      try:
-        no_of_adults = int(input("Enter number of adults: "))
-        # input validation; We must have at least one adult for supervision.
-        if no_of_adults < 1:
-          print("Error: At least one adult is required for supervision.\n")
-          continue
-        break
-      # # The input must be an integer. If the user enters text or a float, display an error and ask again.
-      except ValueError:
-         print("Error: Please enter a valid integer using digits.\n")
+  # we run our program until the user presses enter to exit, 
+  # or raises keyboard interrupt exception, which we handle gracefully using try/except
+    while(determine_if_sale_called != ""):
+      print("\n")
+      # Basis of our program, need numbers of adults & children for calculations:
+      while True:
+        try:
+          no_of_adults = int(input("Enter number of adults: "))
+          # input validation; We must have at least one adult for supervision.
+          if no_of_adults < 1:
+            print("Error: At least one adult is required for supervision.\n")
+            continue
+          break
+        # # The input must be an integer. If the user enters text or a float, display an error and ask again.
+        except ValueError:
+          print("Error: Please enter a valid integer using digits.\n")
+          
+          
+      print("\n")
         
-        
-    print("\n")
+      while True:
+        try:
+          no_of_children = int(input("Enter number of children: "))
+          # input validation; We must have a positive amount of children
+          if no_of_children < 0:
+            print("Error: Number of children cannot be negative.\n")
+            continue
+          break
+          # The input must be an integer. If the user enters text or a float, display an error and ask again.
+        except ValueError:
+          print("Error: Please enter a valid integer using digits.\n")
+          
+      receipt_args = get_cheapest_cost(no_of_adults,no_of_children)
       
-    while True:
-      try:
-        no_of_children = int(input("Enter number of children: "))
-        # input validation; We must have a positive amount of children
-        if no_of_children < 0:
-          print("Error: Number of children cannot be negative.\n")
-          continue
-        break
-        # The input must be an integer. If the user enters text or a float, display an error and ask again.
-      except ValueError:
-         print("Error: Please enter a valid integer using digits.\n")
+      if(receipt_args):
+        purchase_receipt(*receipt_args)
+      
+      determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: \n")
         
-    receipt_args = get_cheapest_cost(no_of_adults,no_of_children)
-    
-    if(receipt_args):
-      purchase_receipt(*receipt_args)
-    
-    determine_if_sale_called = input("Press Enter to exit or type any key to start a new sale: \n")
+  except KeyboardInterrupt:
+    print("\nCurrent Sale aborted by user. Exiting Codetown Public Pool P.O.S..., Goodbye!")
 
 
 if __name__ == "__main__":
